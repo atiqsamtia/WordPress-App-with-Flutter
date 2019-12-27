@@ -1,4 +1,4 @@
-import 'package:wordpress_flutter/model/post_entity.dart';
+import './model/post_entity.dart';
 
 class EntityFactory {
   static T generateOBJ<T>(json) {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:wordpress_flutter/model/post_entity.dart';
-import 'package:wordpress_flutter/widgets/post_card.dart';
+
+import '../model/post_entity.dart';
+import '../widgets/post_card.dart';
 
 class PostDetails extends StatelessWidget {
   PostEntity post;

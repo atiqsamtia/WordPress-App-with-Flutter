@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:wordpress_flutter/model/post_entity.dart';
-import 'package:wordpress_flutter/pages/single_category.dart';
-import 'package:wordpress_flutter/widgets/posts_list.dart';
 
+import '../model/post_entity.dart';
+import '../pages/single_category.dart';
+import '../widgets/posts_list.dart';
 import '../config.dart';
 
 class HomePage extends StatefulWidget {

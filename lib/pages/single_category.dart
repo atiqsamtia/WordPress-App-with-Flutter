@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wordpress_flutter/model/post_entity.dart';
-import 'package:wordpress_flutter/widgets/posts_list.dart';
+
+import '../model/post_entity.dart';
+import '../widgets/posts_list.dart';
 
 class SingleCategory extends StatelessWidget {
   PostCategory category;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wordpress_flutter/config.dart';
-import 'package:wordpress_flutter/pages/home.dart';
+
+import './config.dart';
+import './pages/home.dart';
 
 void main() => runApp(MyApp());
 
