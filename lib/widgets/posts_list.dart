@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:wordpress_flutter/widgets/post_list_item.dart';
 
 import '../config.dart';
 import '../model/post_entity.dart';
@@ -83,7 +84,7 @@ class _PostsListState extends State<PostsList> {
     if (index == posts.length) {
       return _buildProgressIndicator();
     } else {
-      return PostCard(posts[index]);
+      return PostListItem(posts[index]);
     }
   }
 
