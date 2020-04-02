@@ -34,23 +34,7 @@ class PostCard extends StatelessWidget {
                   FadeInImage.assetNetwork(placeholder: 'images/placeholder.jpg', image: post.image, width: width, height: size.height, fit: BoxFit.cover),
                   Positioned(
                     right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 5.0),
-                      child: Opacity(
-                        opacity: 0.8,
-                        child: MaterialButton(
-                          height: 26.0,
-                          onPressed: () {},
-                          color: Theme.of(context).primaryColor,
-                          child: Text(post.extra.categories[0].name.toUpperCase(),
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12.0,
-                              )),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                        ),
-                      ),
-                    ),
+                    child: CategoryPill(post: post),
                   ),
                   Positioned(
                     bottom: 0,
@@ -75,49 +59,93 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: <Widget>[
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15.0),
-                            child: Image.network(
-                              post.extra.author[0].avatar,
-                              height: 26.0,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Text(
-                              post.extra.author[0].name,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.0,
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(1.0, 1.0),
-                                    blurRadius: 5.0,
-                                    color: Colors.black,
-                                  ),
-                                  Shadow(
-                                    offset: Offset(1.0, 1.0),
-                                    blurRadius: 8.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: Author(post: post),
                   )
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CategoryPill extends StatelessWidget {
+  const CategoryPill({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final PostEntity post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 5.0),
+      child: Opacity(
+        opacity: 0.8,
+        child: MaterialButton(
+          height: 26.0,
+          onPressed: () {},
+          color: Theme.of(context).primaryColor,
+          child: Text(post.category.toUpperCase(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12.0,
+              )),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        ),
+      ),
+    );
+  }
+}
+
+class Author extends StatelessWidget {
+  const Author({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final PostEntity post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6.0),
+            child: Image.network(
+              post.extra.author[0].avatar,
+              height: 26.0,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              post.extra.author[0].name,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14.0,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(1.0, 1.0),
+                    blurRadius: 5.0,
+                    color: Colors.black,
+                  ),
+                  Shadow(
+                    offset: Offset(1.0, 1.0),
+                    blurRadius: 8.0,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

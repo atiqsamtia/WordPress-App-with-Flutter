@@ -14,23 +14,77 @@ class PostDetails extends StatelessWidget {
 //    post.isDetailCard = true;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        title: Text(post.title),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            PostCard(post),
-            Html(
-              data: post.content,
-              padding: EdgeInsets.all(8.0),
-              linkStyle: const TextStyle(
-                color: Colors.blueAccent,
-                decorationColor: Colors.blueAccent,
-                decoration: TextDecoration.underline,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          Size size = MediaQuery.of(context).size;
+          return <Widget>[
+            SliverAppBar(
+              iconTheme: IconThemeData(color: Colors.white),
+              floating: true,
+              expandedHeight: 300.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Stack(
+                  children: <Widget>[
+                    FadeInImage.assetNetwork(
+                      image: post.image,
+                      placeholder: 'images/placeholder.jpg',
+                      width: size.width,
+                      height: size.height,
+                      fit: BoxFit.cover,
+                    ),
+                    Positioned(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [Colors.black, Colors.transparent],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: Author(post: post),
+                    ),
+                    Positioned(
+                      bottom: 35.0,
+                      child: Container(
+                          width: size.width,
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  post.title,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: CategoryPill(post: post),
+                    ),
+                  ],
+                ),
               ),
             )
-          ],
+          ];
+        },
+        body: SingleChildScrollView(
+          child: Html(
+            data: post.content,
+            padding: EdgeInsets.all(8.0),
+            linkStyle: const TextStyle(
+              color: Colors.blueAccent,
+              decorationColor: Colors.blueAccent,
+              decoration: TextDecoration.underline,
+            ),
+          ),
         ),
       ),
     );
