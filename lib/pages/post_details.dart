@@ -25,12 +25,15 @@ class PostDetails extends StatelessWidget {
               flexibleSpace: FlexibleSpaceBar(
                 background: Stack(
                   children: <Widget>[
-                    FadeInImage.assetNetwork(
-                      image: post.image,
-                      placeholder: 'images/placeholder.jpg',
-                      width: size.width,
-                      height: size.height,
-                      fit: BoxFit.cover,
+                    Hero(
+                      tag: post.image,
+                      child: FadeInImage.assetNetwork(
+                        image: post.image,
+                        placeholder: 'images/placeholder.jpg',
+                        width: size.width,
+                        height: size.height,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Positioned(
                       child: Container(

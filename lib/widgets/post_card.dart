@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../pages/post_details.dart';
 import '../model/post_entity.dart';
+import '../pages/post_details.dart';
 
 class PostCard extends StatelessWidget {
   PostEntity post;
@@ -31,7 +31,9 @@ class PostCard extends StatelessWidget {
               width: width,
               child: Stack(
                 children: <Widget>[
-                  FadeInImage.assetNetwork(placeholder: 'images/placeholder.jpg', image: post.image, width: width, height: size.height, fit: BoxFit.cover),
+                  Hero(
+                      tag: post.image,
+                      child: FadeInImage.assetNetwork(placeholder: 'images/placeholder.jpg', image: post.image, width: width, height: size.height, fit: BoxFit.cover)),
                   Positioned(
                     right: 0,
                     child: CategoryPill(post: post),
@@ -59,7 +61,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    child: Author(post: post),
+                    child: Hero(tag: '${post.id}_author',child: Author(post: post)),
                   )
                 ],
               ),
