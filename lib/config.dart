@@ -5,6 +5,9 @@ const String TITLE = "ProPakistani";
 /// last slash ' / ' is mandatory
 const String URL = "https://propakistani.pk/";
 
+const int FEATURED_CATEGORY_ID = 46671;
+const String FEATURED_CATEGORY_TITLE = 'Featured';
+
 const MaterialColor APP_COLOR = MaterialColor(0xFF249991, {
   50: Color(0x1A249991),
   100: Color(0x33249991),

@@ -68,15 +68,13 @@ class _PostsListState extends State<PostsList> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListView.builder(
-        itemBuilder: postTile,
-        itemCount: posts.length + 1,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
-        controller: _scrollController,
-      ),
+    return ListView.builder(
+      itemBuilder: postTile,
+      itemCount: posts.length + 1,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      physics: ClampingScrollPhysics(),
+      controller: _scrollController,
     );
   }
 
