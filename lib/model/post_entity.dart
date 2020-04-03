@@ -9,9 +9,9 @@ class PostEntity {
   String content;
 
   /// featured image getter with checks for no image
-  String get image  => extra?.image[0]?.sourceUrl ?? '';
+  String get image =>  extra?.image != null ? extra.image[0]?.sourceUrl ?? '' : '';
 
-  String get category => extra?.categories[0]?.name ?? '';
+  String get category => extra?.categories != null ? extra.categories[0]?.name ?? '' : '';
 
   String get date => DateFormat('MMM. dd - h:mm a').format(DateTime.parse(this.modifiedGmt)).toString();
 
