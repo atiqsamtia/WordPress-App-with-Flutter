@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import '../config.dart';
 import '../model/post_entity.dart';
+import '../network/wp_api.dart';
 import '../pages/single_category.dart';
 import '../widgets/featured_category_list.dart';
 import '../widgets/posts_list.dart';
@@ -18,12 +16,9 @@ class _HomePageState extends State<HomePage> {
   List<PostCategory> categories = new List<PostCategory>();
 
   void getCategoriesList() {
-    http.get(URL + "wp-json/wp/v2/categories?orderby=count&order=desc&per_page=15").then((response) {
-      dynamic json = jsonDecode(response.body);
+    WpApi.getCategoriesList().then((_categories) {
       setState(() {
-        (json as List).forEach((v) {
-          categories.add(new PostCategory.fromJson(v));
-        });
+        categories.addAll(_categories);
       });
     });
   }

@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:wordpress_flutter/widgets/post_list_item.dart';
 
-import '../config.dart';
 import '../model/post_entity.dart';
-import 'post_card.dart';
+import '../network/wp_api.dart';
+import '../widgets/post_list_item.dart';
 
 class PostsList extends StatefulWidget {
   int category = 0;
@@ -31,16 +27,7 @@ class _PostsListState extends State<PostsList> {
         isLoading = true;
       });
 
-      String extra = widget.category != 0 ? "&categories=" + widget.category.toString() : "";
-
-      http.get(URL + "wp-json/wp/v2/posts?_embed&page=$page" + extra).then((response) {
-        dynamic json = jsonDecode(response.body);
-
-        List<PostEntity> _posts = new List<PostEntity>();
-        (json as List).forEach((v) {
-          _posts.add(new PostEntity.fromJson(v));
-        });
-
+      WpApi.getPostsList(category: widget.category, page: page).then((_posts) {
         setState(() {
           isLoading = false;
           posts.addAll(_posts);
