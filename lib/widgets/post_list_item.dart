@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../model/post_entity.dart';
 import '../pages/post_details.dart';
+import '../widgets/helpers.dart';
 
 class PostListItem extends StatelessWidget {
   final PostEntity post;
@@ -22,12 +23,10 @@ class PostListItem extends StatelessWidget {
               padding: const EdgeInsets.only(right: 14.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: FadeInImage.assetNetwork(
-                  image: post.image,
-                  placeholder: 'images/placeholder.jpg',
+                child: CachedImage(
+                  post.image,
                   width: 100,
                   height: 85,
-                  fit: BoxFit.cover,
                 ),
               ),
             ),

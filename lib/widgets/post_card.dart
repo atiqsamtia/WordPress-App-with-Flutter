@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../model/post_entity.dart';
 import '../pages/post_details.dart';
+import '../widgets/helpers.dart';
 
 class PostCard extends StatelessWidget {
   PostEntity post;
@@ -15,8 +16,7 @@ class PostCard extends StatelessWidget {
     double width = isFeaturedList ? size.width * 0.8 : size.width;
     return GestureDetector(
       onTap: () {
-        if(isFeaturedList)
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetails(post)));
+        if (isFeaturedList) Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetails(post)));
       },
       child: Padding(
         padding: EdgeInsets.all(isFeaturedList ? 10.0 : 5.0),
@@ -32,8 +32,13 @@ class PostCard extends StatelessWidget {
               child: Stack(
                 children: <Widget>[
                   Hero(
-                      tag: post.image,
-                      child: FadeInImage.assetNetwork(placeholder: 'images/placeholder.jpg', image: post.image, width: width, height: size.height, fit: BoxFit.cover)),
+                    tag: post.image,
+                    child: CachedImage(
+                      post.image,
+                      width: width,
+                      height: size.height,
+                    ),
+                  ),
                   Positioned(
                     right: 0,
                     child: CategoryPill(post: post),
@@ -61,7 +66,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    child: Hero(tag: '${post.id}_author',child: Author(post: post)),
+                    child: Hero(tag: '${post.id}_author', child: Author(post: post)),
                   )
                 ],
               ),

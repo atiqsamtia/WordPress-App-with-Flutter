@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import '../model/post_entity.dart';
+import '../widgets/helpers.dart';
 import '../widgets/post_card.dart';
 
 class PostDetails extends StatelessWidget {
@@ -27,12 +28,10 @@ class PostDetails extends StatelessWidget {
                   children: <Widget>[
                     Hero(
                       tag: post.image,
-                      child: FadeInImage.assetNetwork(
-                        image: post.image,
-                        placeholder: 'images/placeholder.jpg',
+                      child: CachedImage(
+                        post.image,
                         width: size.width,
                         height: size.height,
-                        fit: BoxFit.cover,
                       ),
                     ),
                     Positioned(
