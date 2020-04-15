@@ -42,7 +42,7 @@ class PostListItem extends StatelessWidget {
                       textAlign: TextAlign.left,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0, fontFamily: 'Roboto'),
+                      style: Theme.of(context).textTheme.body2, //TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0, fontFamily: 'Roboto'),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
