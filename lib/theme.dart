@@ -7,6 +7,7 @@ class Style {
     return ThemeData(
       brightness: isDark ? Brightness.dark : Brightness.light,
       backgroundColor: backgroundColor,
+      canvasColor: backgroundColor,
       textSelectionColor: isDark ? Colors.white12 : Colors.grey.shade300,
       primaryColor: Color(0xFF249991),
       accentColor: Color(0xFF249991),
