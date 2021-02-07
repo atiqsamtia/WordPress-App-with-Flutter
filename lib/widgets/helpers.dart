@@ -13,7 +13,7 @@ class CachedImage extends StatelessWidget {
     return CachedNetworkImage(
       width: width,
       height: height,
-      imageUrl: url,
+      imageUrl: url ?? '',
       fit: BoxFit.cover,
       placeholder: (_, __) => Image.asset(
         'images/placeholder.jpg',
