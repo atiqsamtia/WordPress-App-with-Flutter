@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordpress_flutter/widgets/helpers.dart';
 
 import '../model/post_entity.dart';
 import '../widgets/posts_list.dart';
@@ -10,11 +11,14 @@ class SingleCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(category.name),
+    return Directionality(
+      textDirection: textDirection,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(category.name),
+        ),
+        body: PostsList(category: category.id),
       ),
-      body: PostsList(category: category.id),
     );
   }
 }
