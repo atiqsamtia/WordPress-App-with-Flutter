@@ -124,9 +124,10 @@ class Author extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(6.0),
-            child: Image.network(
-              post.extra.author[0].avatar,
+            child: CachedImage(
+              post?.extra?.author[0]?.avatar,
               height: 26.0,
+              width: 26.0,
             ),
           ),
           Padding(
