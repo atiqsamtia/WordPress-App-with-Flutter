@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../config.dart';
+
 class CachedImage extends StatelessWidget {
   final String url;
   final double height;
@@ -23,3 +25,6 @@ class CachedImage extends StatelessWidget {
     );
   }
 }
+
+
+TextDirection textDirection = isRTL ?  TextDirection.rtl :  TextDirection.ltr;

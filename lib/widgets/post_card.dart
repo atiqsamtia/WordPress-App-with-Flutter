@@ -39,8 +39,9 @@ class PostCard extends StatelessWidget {
                       height: size.height,
                     ),
                   ),
-                  Positioned(
-                    right: 0,
+                  Positioned.directional(
+                    textDirection: textDirection,
+                    end: 0,
                     child: CategoryPill(post: post),
                   ),
                   Positioned(
@@ -131,7 +132,7 @@ class Author extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsetsDirectional.only(start: 8.0),
             child: Text(
               post.extra.author[0].name,
               style: TextStyle(
