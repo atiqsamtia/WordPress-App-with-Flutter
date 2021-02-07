@@ -39,8 +39,9 @@ class PostCard extends StatelessWidget {
                       height: size.height,
                     ),
                   ),
-                  Positioned(
-                    right: 0,
+                  Positioned.directional(
+                    textDirection: textDirection,
+                    end: 0,
                     child: CategoryPill(post: post),
                   ),
                   Positioned(

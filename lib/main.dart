@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './widgets/helpers.dart';
 import './config.dart';
 import './pages/home.dart';
 import 'services/theme_changer.dart';
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
           themeMode: themeChanger.getTheme,
           darkTheme: Style.get(true),
           theme: Style.get(false),
-          home: HomePage(),
+          home: Directionality(
+            textDirection: textDirection,
+            child: HomePage(),
+          ),
         );
       }),
     );
