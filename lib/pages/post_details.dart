@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 
 import '../model/post_entity.dart';
 import '../widgets/helpers.dart';
@@ -81,13 +82,17 @@ class PostDetails extends StatelessWidget {
             ];
           },
           body: SingleChildScrollView(
-            child: Html(
-              data: post.content,
-              padding: EdgeInsets.all(8.0),
-              linkStyle: const TextStyle(
-                color: Colors.blueAccent,
-                decorationColor: Colors.blueAccent,
-                decoration: TextDecoration.underline,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Html(
+                data: post.content,
+                style: {
+                  'a' : Style(
+                    color: Colors.blueAccent,
+                    textDecoration: TextDecoration.underline,
+                    textDecorationColor: Colors.blueAccent
+                  )
+                },
               ),
             ),
           ),
