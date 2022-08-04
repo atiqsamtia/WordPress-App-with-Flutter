@@ -13,7 +13,7 @@ class WpApi {
     try {
       String extra = category != 0 ? '&categories=' + '$category' : '';
 
-      dynamic response = await http.get(BASE_URL + 'posts?_embed&page=$page' + extra);
+      dynamic response = await http.get(Uri.parse(BASE_URL + 'posts?_embed&page=$page' + extra));
       dynamic json = jsonDecode(response.body);
 
       (json as List).forEach((v) {
@@ -28,7 +28,7 @@ class WpApi {
   static Future<List<PostCategory>> getCategoriesList({int page = 1}) async {
     List<PostCategory> categories = List();
     try {
-      dynamic response = await http.get(BASE_URL + 'categories?orderby=count&order=desc&per_page=15&page=$page');
+      dynamic response = await http.get(Uri.parse(BASE_URL + 'categories?orderby=count&order=desc&per_page=15&page=$page'));
       dynamic json = jsonDecode(response.body);
 
       (json as List).forEach((v) {

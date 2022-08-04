@@ -13,7 +13,7 @@ class Style {
       accentColor: Color(0xFF249991),
       appBarTheme: AppBarTheme(
           textTheme: TextTheme(
-            title: TextStyle(
+            titleMedium: TextStyle(
               color: foregroundColor,
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -23,8 +23,8 @@ class Style {
           elevation: 0,
           iconTheme: IconThemeData(color: foregroundColor)),
       textTheme: TextTheme(
-        display1: TextStyle(color: foregroundColor, fontWeight: FontWeight.bold),
-        body2: TextStyle(
+        bodyText1: TextStyle(color: foregroundColor, fontWeight: FontWeight.bold),
+        bodyText2: TextStyle(
           color: foregroundColor,
           fontWeight: FontWeight.bold,
           fontSize: 18.0,

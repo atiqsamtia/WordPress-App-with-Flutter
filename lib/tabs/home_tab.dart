@@ -47,7 +47,7 @@ class ListHeading extends StatelessWidget {
         children: <Widget>[
           Text(
             title,
-            style: Theme.of(context).textTheme.display1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           GestureDetector(
             onTap: () {

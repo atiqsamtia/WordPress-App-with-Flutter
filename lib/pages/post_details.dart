@@ -17,7 +17,7 @@ class PostDetails extends StatelessWidget {
     return Directionality(
       textDirection: textDirection,
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             Size size = MediaQuery.of(context).size;
