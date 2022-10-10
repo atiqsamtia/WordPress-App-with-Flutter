@@ -55,7 +55,7 @@ class ListHeading extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) => SingleCategory(category)));
             },
             child: Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: Theme.of(context).textSelectionColor),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: Theme.of(context).colorScheme.secondary),
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
               child: Text('Show All'),
             ),
